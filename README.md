@@ -19,7 +19,7 @@ Elige tu juego desde un carrusel visual y juega directamente en la página sin s
 
 ## 📁 Estructura del proyecto
 
-
+```Bash
 ZonaArcade/
 ├── index.html
 ├── main.js
@@ -29,7 +29,7 @@ ZonaArcade/
 ├── img2.png
 ├── img3.png
 └── img4.png
-
+```
 
 ---
 
