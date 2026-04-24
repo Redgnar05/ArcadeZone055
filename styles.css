@@ -360,6 +360,7 @@ footer {
   border-top:1px solid rgba(255,255,255,.05);
 }
 
+<<<<<<< HEAD
 
 /* ── scratch link ── */
 .scratch-link {
@@ -387,6 +388,8 @@ footer {
   transform: scale(1.15);
   box-shadow: 0 0 10px rgba(255,255,255,.3);
 }
+=======
+>>>>>>> a7413cad829705b657b8c5b85749aac769b73534
 /* ── responsive ── */
 @media(max-width:600px){
   .game-card { flex: 0 0 calc(100vw - 100px); }

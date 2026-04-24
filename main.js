@@ -7,7 +7,10 @@ const games = [
     emoji: '🟡',
     bg: 'url("./img/img1.png")',
     src: 'https://scratch.mit.edu/projects/1309711573/embed',
+<<<<<<< HEAD
     scratch: 'https://scratch.mit.edu/projects/1309711573',
+=======
+>>>>>>> a7413cad829705b657b8c5b85749aac769b73534
   },
   {
     id: 'dinodisparo',
@@ -16,7 +19,10 @@ const games = [
     emoji: '🦖',
     bg: 'url("./img/img2.png")',
     src: 'https://scratch.mit.edu/projects/1308851657/embed',
+<<<<<<< HEAD
     scratch: 'https://scratch.mit.edu/projects/1308851657',
+=======
+>>>>>>> a7413cad829705b657b8c5b85749aac769b73534
   },
   {
     id: 'nave-espacial',
@@ -25,7 +31,10 @@ const games = [
     emoji: '🚀',
     bg: 'url("./img/img3.png")',
     src: 'https://scratch.mit.edu/projects/1305289171/embed',
+<<<<<<< HEAD
     scratch: 'https://scratch.mit.edu/projects/1305289171',
+=======
+>>>>>>> a7413cad829705b657b8c5b85749aac769b73534
   },
   {
     id: 'murcielago',
@@ -34,7 +43,10 @@ const games = [
     emoji: '🦇',
     bg: 'url("./img/img4.png")',
     src: 'https://scratch.mit.edu/projects/1202083377/embed',
+<<<<<<< HEAD
     scratch: 'https://scratch.mit.edu/projects/1202083377',
+=======
+>>>>>>> a7413cad829705b657b8c5b85749aac769b73534
   },
 ];
 
@@ -58,16 +70,24 @@ games.forEach((g, i) => {
       <div class="card-title">${g.title}</div>
       <div class="card-genre">${g.genre}</div>
       <span class="play-badge">▶ Jugar</span>
+<<<<<<< HEAD
     </div>
     <a class="scratch-link" href="${g.scratch}" target="_blank" rel="noopener" title="Ver en Scratch" onclick="event.stopPropagation()">
       <img src="https://scratch.mit.edu/favicon.ico" alt="Scratch" />
     </a>`;
+=======
+    </div>`;
+>>>>>>> a7413cad829705b657b8c5b85749aac769b73534
 
   // Asignar imagen via JS para evitar problemas con rutas relativas en inline style
   const thumb = card.querySelector('.card-thumb-placeholder');
   thumb.style.backgroundImage = g.bg;
   thumb.style.backgroundSize = 'cover';
   thumb.style.backgroundPosition = 'center';
+<<<<<<< HEAD
+=======
+
+>>>>>>> a7413cad829705b657b8c5b85749aac769b73534
   card.addEventListener('click', () => openGame(g));
   track.appendChild(card);
 
