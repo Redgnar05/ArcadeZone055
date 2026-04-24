@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arcade Zone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>ARCADE ZONE</h1>
+    <p>Elige tu juego y presiona play</p>
+  </header>
+
+  <section class="carousel-section">
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track" id="track"></div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="ctrl-btn" id="prevBtn" aria-label="anterior">&#8592;</button>
+      <div class="carousel-dots" id="dots"></div>
+      <button class="ctrl-btn" id="nextBtn" aria-label="siguiente">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-box">
+
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle"></span>
+
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button onclick="gameFrame.requestFullscreen()" class="fullscreen-btn">
+            ⛶
+          </button>
+
+          <button class="modal-close" id="modalClose" aria-label="cerrar">
+            &#10005;
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-iframe-wrap">
+        <div class="iframe-loader" id="iframeLoader">
+          <span>CARGANDO JUEGO...</span>
+          <div class="loader-bar"></div>
+        </div>
+        <iframe id="gameFrame" width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>INSERT COIN &nbsp;·&nbsp; PRESS START &nbsp;·&nbsp; GAME ON</footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
