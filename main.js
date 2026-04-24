@@ -58,10 +58,10 @@ games.forEach((g, i) => {
       <div class="card-title">${g.title}</div>
       <div class="card-genre">${g.genre}</div>
       <span class="play-badge">▶ Jugar</span>
-    </div>
-    <a class="scratch-link" href="${g.scratch}" target="_blank" rel="noopener" title="Ver en Scratch" onclick="event.stopPropagation()">
-      <img src="https://scratch.mit.edu/favicon.ico" alt="Scratch" />
-    </a>`;
+      <a class="scratch-link" href="${g.scratch}" target="_blank" rel="noopener" title="Ver en Scratch" onclick="event.stopPropagation()">
+        <img src="https://scratch.mit.edu/favicon.ico" alt="Scratch" />
+      </a>
+    </div>`;
 
   // Asignar imagen via JS para evitar problemas con rutas relativas en inline style
   const thumb = card.querySelector('.card-thumb-placeholder');
