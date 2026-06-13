@@ -21,14 +21,20 @@ Elige tu juego desde un carrusel visual y juega directamente en la página sin s
 
 ```Bash
 ZonaArcade/
-├── index.html
-├── main.js
-├── styles.css
-└── img/
-    ├── img1.png
-    ├── img2.png
-    ├── img3.png
-    └── img4.png
+├── index.html                  ← hub limpio
+├── main.js                     ← carrusel
+├── styles.css                  
+├── img/                        
+│
+├── arcade-zone/
+│   └── arcade.html             ← index.html de ZonaArcade
+│
+└── math-quest/
+    ├── math-quest.html         ← index.html de Math Quest
+    ├── css/style.css
+    └── js/ (8 módulos*)
+    
+*Posible crecemineto
 ```
 
 ---

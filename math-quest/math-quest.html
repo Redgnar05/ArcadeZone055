@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Quest – Aventura Matemática</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="game-root">
+
+    <!-- ── CANVAS ── -->
+    <canvas id="game-canvas" width="680" height="480"></canvas>
+
+    <!-- ── HUD ── -->
+    <div class="hud hidden" id="hud">
+      <div class="hud-box" id="hud-score">PUNTOS: 0</div>
+      <div class="hud-box" id="hud-level">NIVEL: 1</div>
+      <div class="hud-box" id="hud-lives">❤️❤️❤️</div>
+    </div>
+
+    <!-- ── PANTALLA INICIO ── -->
+    <div class="screen" id="screen-start">
+      <div class="title-logo">MATH QUEST</div>
+      <div class="title-sub">⚡ AVENTURA MATEMÁTICA ⚡</div>
+      <div class="instructions">
+        <p><span>← →</span> &nbsp;Mover &nbsp;|&nbsp; <span>↑ / W / ESPACIO</span> &nbsp;Saltar</p>
+        <p><span>Responde</span> preguntas al tocar enemigos</p>
+        <p>¡Llega a la <span>bandera dorada</span> para ganar!</p>
+        <p><span>3 vidas</span> · <span>3 niveles</span> de dificultad creciente</p>
+      </div>
+      <button class="pixel-btn" id="btn-start">▶ JUGAR</button>
+    </div>
+
+    <!-- ── PANTALLA GAME OVER ── -->
+    <div class="screen hidden" id="screen-gameover">
+      <div class="big-emoji">💀</div>
+      <div class="title-logo red">GAME OVER</div>
+      <div class="final-label">PUNTUACIÓN FINAL</div>
+      <div class="final-score" id="go-score">0</div>
+      <div class="stars" id="go-stars">⭐</div>
+      <button class="pixel-btn" id="btn-retry">🔄 REINTENTAR</button>
+      <button class="pixel-btn secondary" id="btn-menu-go">🏠 MENÚ</button>
+    </div>
+
+    <!-- ── PANTALLA VICTORIA ── -->
+    <div class="screen hidden" id="screen-win">
+      <div class="big-emoji">🏆</div>
+      <div class="title-logo gold">¡GANASTE!</div>
+      <div class="final-label">PUNTUACIÓN TOTAL</div>
+      <div class="final-score" id="win-score">0</div>
+      <div class="stars" id="win-stars">⭐⭐⭐</div>
+      <div class="final-msg" id="win-msg">¡Excelente desempeño!</div>
+      <button class="pixel-btn" id="btn-play-again">▶ JUGAR DE NUEVO</button>
+      <button class="pixel-btn secondary" id="btn-menu-win">🏠 MENÚ</button>
+    </div>
+
+    <!-- ── OVERLAY QUIZ ── -->
+    <div class="quiz-overlay hidden" id="quiz-overlay">
+      <div class="quiz-box">
+        <div class="quiz-title">⚡ DESAFÍO MATEMÁTICO ⚡</div>
+        <div class="quiz-question" id="quiz-q"></div>
+        <div class="quiz-options" id="quiz-opts"></div>
+        <div class="quiz-feedback" id="quiz-fb"></div>
+      </div>
+    </div>
+
+  </div><!-- #game-root -->
+
+  <!-- ── MÓDULOS JS (rutas relativas a esta carpeta, sin cambios) ── -->
+  <script src="js/config.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

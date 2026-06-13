@@ -1,11 +1,23 @@
-// ── Juegos de Scratch (públicos) ─────────────────────────────────────────────
+// ── Juegos ────────────────────────────────────────────────────────────────────
+// Las rutas de img/ y src son relativas a la raíz del proyecto (ZonaArcade/).
+// arcade.html vive en arcade-zone/ → sube un nivel con ../
 const games = [
+  // ── Math Quest (juego local, sin iframe de Scratch) ───────────────────────
+  {
+    id: 'math-quest',
+    title: 'Math Quest',
+    genre: 'Educativo',
+    emoji: '🧮',
+    bg: 'url("../img/imgMath-quest.png")',
+    src: '../math-quest/math-quest.html',   // ruta relativa desde arcade-zone/
+    scratch: null,                           // no tiene página de Scratch
+  },
   {
     id: 'balltwo',
     title: 'BallTwo',
     genre: 'Arcade',
     emoji: '🟡',
-    bg: 'url("./img/img1.png")',
+    bg: 'url("../img/img1.png")',
     src: 'https://scratch.mit.edu/projects/1309711573/embed',
     scratch: 'https://scratch.mit.edu/projects/1309711573',
   },
@@ -14,7 +26,7 @@ const games = [
     title: 'DinoDisparo',
     genre: 'Acción',
     emoji: '🦖',
-    bg: 'url("./img/img2.png")',
+    bg: 'url("../img/img2.png")',
     src: 'https://scratch.mit.edu/projects/1308851657/embed',
     scratch: 'https://scratch.mit.edu/projects/1308851657',
   },
@@ -23,7 +35,7 @@ const games = [
     title: 'Nave Espacial',
     genre: 'Shooter',
     emoji: '🚀',
-    bg: 'url("./img/img3.png")',
+    bg: 'url("../img/img3.png")',
     src: 'https://scratch.mit.edu/projects/1305289171/embed',
     scratch: 'https://scratch.mit.edu/projects/1305289171',
   },
@@ -32,7 +44,7 @@ const games = [
     title: 'Escape del Murciélago',
     genre: 'Aventura',
     emoji: '🦇',
-    bg: 'url("./img/img4.png")',
+    bg: 'url("../img/img4.png")',
     src: 'https://scratch.mit.edu/projects/1202083377/embed',
     scratch: 'https://scratch.mit.edu/projects/1202083377',
   },
@@ -48,30 +60,43 @@ const modalTitle    = document.getElementById('modalTitle');
 
 // ── Renderizar tarjetas y dots ────────────────────────────────────────────────
 games.forEach((g, i) => {
-  // Tarjeta
+  // ── Tarjeta ──
   const card = document.createElement('div');
   card.className = 'game-card';
   card.dataset.index = i;
+
+  // El enlace a Scratch sólo se muestra si el juego lo tiene
+  const scratchLink = g.scratch
+    ? `<a class="scratch-link" href="${g.scratch}" target="_blank" rel="noopener"
+          title="Ver en Scratch" onclick="event.stopPropagation()">
+         <img src="https://scratch.mit.edu/favicon.ico" alt="Scratch" />
+       </a>`
+    : '';
+
   card.innerHTML = `
     <div class="card-thumb-placeholder"></div>
     <div class="card-body">
-      <div class="card-title">${g.title}</div>
+      <div class="card-title">${g.emoji} ${g.title}</div>
       <div class="card-genre">${g.genre}</div>
       <span class="play-badge">▶ Jugar</span>
-      <a class="scratch-link" href="${g.scratch}" target="_blank" rel="noopener" title="Ver en Scratch" onclick="event.stopPropagation()">
-        <img src="https://scratch.mit.edu/favicon.ico" alt="Scratch" />
-      </a>
+      ${scratchLink}
     </div>`;
 
-  // Asignar imagen via JS para evitar problemas con rutas relativas en inline style
+  // Imagen o gradiente de fondo del thumbnail
   const thumb = card.querySelector('.card-thumb-placeholder');
-  thumb.style.backgroundImage = g.bg;
-  thumb.style.backgroundSize = 'cover';
-  thumb.style.backgroundPosition = 'center';
+  if (g.bg.startsWith('url(')) {
+    thumb.style.backgroundImage    = g.bg;
+    thumb.style.backgroundSize     = 'cover';
+    thumb.style.backgroundPosition = 'center';
+  } else {
+    // Gradiente CSS (Math Quest y futuros juegos locales)
+    thumb.style.background = g.bg;
+  }
+
   card.addEventListener('click', () => openGame(g));
   track.appendChild(card);
 
-  // Punto indicador
+  // ── Punto indicador ──
   const dot = document.createElement('div');
   dot.className = 'dot' + (i === 0 ? ' active' : '');
   dot.dataset.index = i;
@@ -88,23 +113,19 @@ const getDots  = () => document.querySelectorAll('.dot');
 function cardWidth() {
   const c = track.querySelector('.game-card');
   if (!c) return 0;
-  const style = getComputedStyle(track);
-  const gap = parseFloat(style.gap) || 24;
+  const gap = parseFloat(getComputedStyle(track).gap) || 24;
   return c.offsetWidth + gap;
 }
 
-/** Aplica padding lateral al track para que la primera y última tarjeta puedan centrarse */
 function applyTrackPadding() {
   const card = track.querySelector('.game-card');
   if (!card) return;
-  const cardW   = card.offsetWidth;
   const viewW   = track.parentElement.offsetWidth;
-  const sidepad = Math.max(0, (viewW - cardW) / 2);
+  const sidepad = Math.max(0, (viewW - card.offsetWidth) / 2);
   track.style.paddingLeft  = sidepad + 'px';
   track.style.paddingRight = sidepad + 'px';
 }
 
-/** Calcula el translateX para centrar la tarjeta `idx` (con padding ya aplicado) */
 function offsetForIndex(idx) {
   return idx * cardWidth();
 }
@@ -128,7 +149,6 @@ track.addEventListener('touchend',   e => {
   if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
 });
 
-// Recalcular posición al redimensionar ventana
 window.addEventListener('resize', () => goTo(current));
 
 // ── Modal con iframe ──────────────────────────────────────────────────────────
@@ -139,7 +159,6 @@ function openGame(g) {
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  // Pequeño delay para mostrar animación de carga antes del iframe
   setTimeout(() => {
     gameFrame.src = g.src;
     gameFrame.onload = () => loader.classList.add('hidden');
@@ -149,18 +168,13 @@ function openGame(g) {
 function closeModal() {
   overlay.classList.remove('open');
   document.body.style.overflow = '';
-  // Limpiar el iframe al terminar la animación de cierre
   setTimeout(() => { gameFrame.src = ''; }, 350);
 }
 
 function goFullScreen() {
-  if (gameFrame.requestFullscreen) {
-    gameFrame.requestFullscreen();
-  } else if (gameFrame.webkitRequestFullscreen) {
-    gameFrame.webkitRequestFullscreen();
-  } else if (gameFrame.msRequestFullscreen) {
-    gameFrame.msRequestFullscreen();
-  }
+  if (gameFrame.requestFullscreen)             gameFrame.requestFullscreen();
+  else if (gameFrame.webkitRequestFullscreen)  gameFrame.webkitRequestFullscreen();
+  else if (gameFrame.msRequestFullscreen)      gameFrame.msRequestFullscreen();
 }
 
 document.getElementById('modalClose').addEventListener('click', closeModal);
