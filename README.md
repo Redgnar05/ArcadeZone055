@@ -3,6 +3,8 @@
 Galería interactiva de juegos de Scratch con estética retro-arcade.  
 Elige tu juego desde un carrusel visual y juega directamente en la página sin salir de ella.
 
+https://arcade-zone-055.netlify.app
+
 ---
 
 ## ✨ Características

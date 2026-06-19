@@ -8,8 +8,8 @@ const games = [
     title: 'Math Quest',
     genre: 'Educativo',
     emoji: '🧮',
-    bg: 'url("../img/imgMath-quest.png")',
-    src: '../math-quest/math-quest.html',   // ruta relativa desde arcade-zone/
+    bg: 'url("img/imgMath-quest.png")',
+    src: 'math-quest/math-quest.html',   // ruta relativa desde arcade-zone/
     scratch: null,                           // no tiene página de Scratch
   },
   {
@@ -17,7 +17,7 @@ const games = [
     title: 'BallTwo',
     genre: 'Arcade',
     emoji: '🟡',
-    bg: 'url("../img/img1.png")',
+    bg: 'url("img/img1.png")',
     src: 'https://scratch.mit.edu/projects/1309711573/embed',
     scratch: 'https://scratch.mit.edu/projects/1309711573',
   },
@@ -26,7 +26,7 @@ const games = [
     title: 'DinoDisparo',
     genre: 'Acción',
     emoji: '🦖',
-    bg: 'url("../img/img2.png")',
+    bg: 'url("img/img2.png")',
     src: 'https://scratch.mit.edu/projects/1308851657/embed',
     scratch: 'https://scratch.mit.edu/projects/1308851657',
   },
@@ -35,7 +35,7 @@ const games = [
     title: 'Nave Espacial',
     genre: 'Shooter',
     emoji: '🚀',
-    bg: 'url("../img/img3.png")',
+    bg: 'url("img/img3.png")',
     src: 'https://scratch.mit.edu/projects/1305289171/embed',
     scratch: 'https://scratch.mit.edu/projects/1305289171',
   },
@@ -44,7 +44,7 @@ const games = [
     title: 'Escape del Murciélago',
     genre: 'Aventura',
     emoji: '🦇',
-    bg: 'url("../img/img4.png")',
+    bg: 'url("img/img4.png")',
     src: 'https://scratch.mit.edu/projects/1202083377/embed',
     scratch: 'https://scratch.mit.edu/projects/1202083377',
   },
